@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<Migrations.Models.DTO.EmployeeDTO>;
+
+<h2>Employees</h2>
+<p>Here we can put any Employee Informations</p>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<table>
+    <thead>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>City</th>
+    <th>Dep.Name</th>
+    <th></th>
+    <th></th>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Gender</td>
+                <td>@item.City</td>
+                <td>@item.DepartmentName</td>
+                <td><a asp-controller="Employee" asp-route-id="@item.Id" asp-action="Edit">Edit</a></td>
+                <td><a asp-controller="Employee" asp-route-id="@item.Id" asp-action="Details">Details</a></td>
+                <td><a asp-controller="Employee" asp-route-id="@item.Id" asp-action="Delete">Delete</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>

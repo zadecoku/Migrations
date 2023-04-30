@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<Migrations.Models.DTO.ProffesorEmployeeDTO>;
+<h3>Proffesor</h3>
+
+<h2>@ViewBag.Head</h2>
+
+<table style="font-family:Arial">
+    <thead>
+        <th>Name</th>
+        <th>Birthdate</th>
+        <th>Dep.Name</th>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.ProffesorEmployee.Proffesor)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.BirthDate.ToString("MM/dd/yyyy")</td>
+                <td>@item.DepartmentName</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<h2>Employees</h2>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>City</th>
+        <th>Dep.Name</th>
+        <th></th>
+        <th></th>
+
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.ProffesorEmployee.Employee)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Gender</td>
+                <td>@item.City</td>
+                <td>@item.DepartmentName</td>
+                <td><a asp-controller="Employee" asp-route-id="@item.Id" asp-action="Edit">Edit</a></td>
+                <td><a asp-controller="Employee" asp-route-id="@item.Id" asp-action="Details">Details</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
